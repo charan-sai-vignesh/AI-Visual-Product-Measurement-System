@@ -8,7 +8,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-MAX_IMAGE_SIDE = 1024  # 🔥 safety resize for vision models
+MAX_IMAGE_SIDE = 1024  #  safety resize for vision models
 
 
 async def download_image(url: str, timeout: int = 30) -> Optional[Image.Image]:
@@ -34,7 +34,7 @@ async def download_image(url: str, timeout: int = 30) -> Optional[Image.Image]:
                 if image.mode != "RGB":
                     image = image.convert("RGB")
 
-                # 🔥 Resize large images safely
+                # Resize large images safely
                 if max(image.size) > MAX_IMAGE_SIDE:
                     image.thumbnail((MAX_IMAGE_SIDE, MAX_IMAGE_SIDE))
 
@@ -43,3 +43,4 @@ async def download_image(url: str, timeout: int = 30) -> Optional[Image.Image]:
     except Exception as e:
         logger.error(f"Error downloading image {url}: {e}")
         return None
+
